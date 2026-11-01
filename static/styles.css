@@ -1,0 +1,89 @@
+/* Simple, clean UI styles */
+:root {
+  --bg: #0b1020;
+  --panel: #111932;
+  --accent: #6ea8fe;
+  --accent-2: #9ad1ff;
+  --text: #e6eefc;
+  --muted: #a5b4d6;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 80% -100px, #1a2755 0%, transparent 70%),
+              radial-gradient(1000px 800px at -10% -100px, #2b3a84 0%, transparent 60%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.hero {
+  text-align: center;
+  margin: 24px 0 28px;
+}
+.title {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 6vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  margin: 0 auto 18px;
+  max-width: 640px;
+  color: var(--muted);
+}
+
+.actions { display: inline-flex; gap: 12px; margin-top: 10px; }
+
+.btn {
+  --btn-bg: #22315c;
+  --btn-fg: var(--text);
+  --btn-border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  box-shadow: 0 8px 24px -12px var(--shadow);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .08s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px -12px var(--shadow); }
+.btn:active { transform: translateY(0); }
+.btn.primary { --btn-bg: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1226; }
+.btn.secondary { --btn-bg: #0f1a34; color: var(--text); }
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px 20px 16px;
+  box-shadow: 0 16px 40px -20px var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.card h2 { margin: 0 0 6px; font-size: 18px; color: var(--accent-2); }
+.greeting { font-size: 20px; margin: 4px 0 0; }
+
+.footer {
+  margin-top: 36px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+.footer a { color: var(--accent-2); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <h1 class="title">Hello, world! 👋</h1>
+        <p class="subtitle">This is a minimal FastAPI app with a clean UI.</p>
+        <div class="actions">
+          <button id="refreshBtn" class="btn primary">
+            Refresh greeting
+          </button>
+          <a class="btn secondary" href="/api/hello" target="_blank" rel="noopener">View JSON API</a>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Greeting</h2>
+        <p id="greeting" class="greeting">Loading…</p>
+      </section>
+
+      <footer class="footer">
+        <span>Built with FastAPI</span>
+        <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">Docs</a>
+      </footer>
+    </main>
+
+    <script>
+      async function fetchGreeting() {
+        try {
+          const res = await fetch('/api/hello');
+          const data = await res.json();
+          document.getElementById('greeting').textContent = data.message;
+        } catch (e) {
+          document.getElementById('greeting').textContent = 'Failed to load greeting.';
+        }
+      }
+
+      document.getElementById('refreshBtn').addEventListener('click', fetchGreeting);
+      fetchGreeting();
+    </script>
+  </body>
+</html>
